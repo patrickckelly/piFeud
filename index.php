@@ -16,7 +16,11 @@
         <?php
          $template = $twig->load('testTemplate.html');
          $templateVars = array(
-            'templateVar' => 'Hello World!!'
+            'templateVar' => 'Hello World!!',
+            'templateArray' => array(
+            'temp1' => 1,
+            'temp2' => 2,
+            'temp3' => 3,),
          );
          echo $template->render($templateVars);
         ?>
