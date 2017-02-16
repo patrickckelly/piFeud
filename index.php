@@ -6,6 +6,15 @@
     $twig = new Twig_Environment($loader, array(
         'cache' => false,
     ));
+    
+    require_once dirname(__FILE__).'/db_conn.php';
+    $db = new mysqli($servername, $db_username, $db_password, $database, $db_port);
+
+    // Check connection
+    if ($db->connect_error) {
+        die("Connection failed: " . $db->connect_error);
+    } 
+    echo "Connected successfully (".$db->host_info.")";
 ?>
 <html>
     <head>
@@ -23,6 +32,7 @@
             'temp3' => 3,),
          );
          echo $template->render($templateVars);
+         echo '<h1>'.$db_username.'</h1>';
         ?>
     </body>
 </html>
